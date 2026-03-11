@@ -128,7 +128,8 @@ const interviewReportSchema=new mongoose.Schema({
   skillsGap:[skillsGapSchema],
   preparationPlan:[preparationPlanSchema],
   user:{
-    
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Users",
   }
 },{
   timestamps:true

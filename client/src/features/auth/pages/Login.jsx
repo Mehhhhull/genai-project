@@ -1,7 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { useNavigate,Link } from 'react-router';
 import "../auth.form.scss"
 import { useAuth } from '../hooks/useAuth';
+import { useState } from 'react';
 
 const Login = () => {
 
@@ -16,7 +17,7 @@ const Login = () => {
   }
 
   if(loading){
-    return (<main><h1>Rukja bhai.....</h1></main>)>
+    return (<main><h1>Rukja bhai.....</h1></main>)
   }
 
   return (

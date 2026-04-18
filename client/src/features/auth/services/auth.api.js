@@ -6,61 +6,56 @@ const api = axios.create({
     withCredentials: true
 })
 
-export async function register({ username, email, password }) {
+function getErrorPayload(err) {
+    const message = err?.response?.data?.message || err?.message || "Request failed"
+    return { success: false, error: message }
+}
 
+export async function register({ username, email, password }) {
     try {
         const response = await api.post('/api/auth/register', {
-            username, email, password
+            username,
+            email,
+            password
         })
 
-        return response.data
-
+        return { success: true, ...response.data }
     } catch (err) {
-
-        console.log(err)
-
+        console.error(err)
+        return getErrorPayload(err)
     }
-
 }
 
 export async function login({ email, password }) {
-
     try {
-
-        const response = await api.post("/api/auth/login", {
-            email, password
+        const response = await api.post('/api/auth/login', {
+            email,
+            password
         })
 
-        return response.data
-
+        return { success: true, ...response.data }
     } catch (err) {
-        console.log(err)
+        console.error(err)
+        return getErrorPayload(err)
     }
-
 }
 
 export async function logout() {
     try {
-
-        const response = await api.get("/api/auth/logout")
-
-        return response.data
-
+        const response = await api.get('/api/auth/logout')
+        return { success: true, ...response.data }
     } catch (err) {
-
+        console.error(err)
+        return getErrorPayload(err)
     }
 }
 
 export async function getMe() {
-
     try {
-
-        const response = await api.get("/api/auth/get-me")
-
-        return response.data
-
+        const response = await api.get('/api/auth/get-me')
+        return { success: true, ...response.data }
     } catch (err) {
-        console.log(err)
+        console.error(err)
+        return getErrorPayload(err)
     }
-
 }

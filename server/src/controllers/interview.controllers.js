@@ -14,17 +14,18 @@ async function generateInterviewReportController(req,res){
     jobDescription
 })
 
-const interviewReport=await interviewReportModel.create({
-  user:req.user._id,
-  resume:resumeContent.text,
-  selfDescription,
-  jobDescription,
-  ...interviewReportByAi
-})
+const interviewReport = await interviewReportModel.create({
+    user: req.user._id,
+    resume: resumeContent.text,
+    selfDescription,
+    jobDescription,
+    ...interviewReportByAi
+  })
 
-res.status(201).json({
-  message:"Interview Report Generated SUccessfully"
-})
+  res.status(201).json({
+    message: "Interview Report Generated Successfully",
+    interviewReport
+  })
 }
 
 async function getInterviewReportByIdController(req,res){

@@ -15,6 +15,10 @@ const Home = () => {
     const handleGenerateReport = async () => {
         const resumeFile = resumeInputRef.current.files[ 0 ]
         const data = await generateReport({ jobDescription, selfDescription, resumeFile })
+        if (!data) {
+            alert('Could not generate your interview strategy. Please try again.')
+            return
+        }
         navigate(`/interview/${data._id}`)
     }
 

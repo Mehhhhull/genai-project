@@ -78,4 +78,4 @@ async function generateResumePdfController(req,res){
 
 
 
-module.exports={generateInterviewReportController,getInterviewReportByIdController,getAllInterviewReportsController}
+module.exports={generateInterviewReportController,getInterviewReportByIdController,getAllInterviewReportsController,generateResumePdfController}

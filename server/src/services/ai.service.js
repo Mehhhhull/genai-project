@@ -102,7 +102,8 @@ async function generateResumePdf({resume,selfDescription,jobDescription}){
   })
 
   const jsonContent=JSON.parse(response.text)
-  return jsonContent
+  const pdfBuffer=await generatePdfFromHtml(jsonContent.html)
+  return pdfBuffer
 
 }
 
